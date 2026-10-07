@@ -1,0 +1,80 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+model Provider {
+  id        String   @id @default(cuid())
+  name      String
+  baseUrl   String   @map("base_url")
+  apiKey    String   @map("api_key")
+  isActive  Boolean  @default(true) @map("is_active")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  models    Model[]
+
+  @@map("providers")
+}
+
+model Model {
+  id              String   @id @default(cuid())
+  providerId      String   @map("provider_id")
+  rawModelId      String   @map("raw_model_id")
+  displayName     String   @map("display_name")
+  isVisible               Boolean  @default(false) @map("is_visible")
+  originalInputPricePerM  Float    @default(0) @map("original_input_price_per_m")
+  originalOutputPricePerM Float    @default(0) @map("original_output_price_per_m")
+  inputPricePerM          Float    @default(0) @map("input_price_per_m")
+  outputPricePerM         Float    @default(0) @map("output_price_per_m")
+  lastSyncedAt            DateTime @default(now()) @map("last_synced_at")
+
+  provider        Provider @relation(fields: [providerId], references: [id], onDelete: Cascade)
+
+  @@unique([providerId, rawModelId])
+  @@map("models")
+}
+
+model User {
+  id          String        @id @default(cuid())
+  email       String        @unique
+  name        String?
+  password    String
+  role        Role          @default(USER)
+  balance     Float         @default(25.0) @map("balance")
+  status      String        @default("ACTIVE") @map("status")
+  totalTokens Int           @default(0) @map("total_tokens")
+  totalSpent  Float         @default(0.0) @map("total_spent")
+  createdAt   DateTime      @default(now()) @map("created_at")
+  updatedAt   DateTime      @updatedAt @map("updated_at")
+
+  transactions Transaction[]
+
+  @@map("users")
+}
+
+model Transaction {
+  id          String   @id @default(cuid())
+  userId      String   @map("user_id")
+  amount      Float
+  currency    String   @default("USD")
+  type        String   @default("DEPOSIT")
+  status      String   @default("COMPLETED")
+  provider    String   @default("Stripe")
+  referenceId String?  @map("reference_id")
+  description String?
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("transactions")
+}
+

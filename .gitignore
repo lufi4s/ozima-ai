@@ -1,0 +1,34 @@
+# Dependencies
+node_modules/
+/.pnp
+.pnp.js
+
+# Testing
+/coverage
+
+# Production build outputs
+/dist
+/.next/
+out/
+build/
+
+# Environment files & secrets
+.env
+.env*.local
+.env.development
+.env.test
+.env.production
+
+# TypeScript build cache
+*.tsbuildinfo
+
+# Debug and system logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db

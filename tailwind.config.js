@@ -1,0 +1,68 @@
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
+  theme: {
+    extend: {
+      colors: {
+        base: "#0A0B0D",
+        surface: "#101216",
+        elevated: "#16181D",
+        frame: "#0D0E11",
+        "border-subtle": "#1E2127",
+        "border-strong": "#2A2E37",
+        claude: {
+          bg: "#181816",
+          sidebar: "#131211",
+          card: "#21201D",
+          "card-hover": "#282622",
+          border: "#33312C",
+          "border-strong": "#423F38",
+          accent: "#CC785C",
+          "accent-hover": "#D97757",
+          "accent-muted": "rgba(204, 120, 92, 0.15)",
+          text: "#EDE8E1",
+          heading: "#FAF8F5",
+          muted: "#B6B0A6",
+          subtle: "#7C766D",
+        },
+        "text-primary": "#E6E8EB",
+        "text-secondary": "#9BA1AC",
+        "text-tertiary": "#6B7280",
+        "text-disabled": "#454B54",
+        syntax: {
+          keyword: "#C792EA",
+          string: "#C3E88D",
+          func: "#82AAFF",
+          number: "#F78C6C",
+          comment: "#5C6370",
+          const: "#FFCB6B",
+          error: "#F07178",
+        },
+      },
+      fontFamily: {
+        sans: [
+          "-apple-system",
+          "BlinkMacSystemFont",
+          '"Segoe UI"',
+          "Roboto",
+          '"Helvetica Neue"',
+          "Arial",
+          "sans-serif",
+        ],
+        mono: [
+          '"JetBrains Mono"',
+          '"Geist Mono"',
+          '"SFMono-Regular"',
+          "Menlo",
+          "Monaco",
+          "Consolas",
+          "monospace",
+        ],
+      },
+    },
+  },
+  plugins: [],
+};
