@@ -100,7 +100,7 @@ export default function App() {
               className="hidden md:flex fixed bottom-4 right-4 z-50 px-3.5 py-2 rounded-xl bg-[#141824] border border-cyan-500/30 text-xs font-sans text-cyan-400 hover:border-cyan-400 hover:text-cyan-300 transition shadow-2xl items-center gap-2 active:scale-[0.96]"
             >
               <ShieldCheck className="w-4 h-4 text-cyan-400" />
-              <span>Admin Console</span>
+              <span>Harness Operator</span>
             </Link>
           )}
 

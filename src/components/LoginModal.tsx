@@ -19,6 +19,7 @@ import {
 } from "lucide-react";
 import SafeBorderBeam from "@/components/libraries/SafeBorderBeam";
 import SafeBotAvatar from "@/components/libraries/SafeBotAvatar";
+import { OzimaHarnessMark } from "./deepseek/OzimaHarnessBrand";
 
 // Ozima Signature Neural Prism Emblem - Original Bespoke Iconography
 export function OzimaPrismGlyph({ className = "w-4 h-4" }: { className?: string }) {
@@ -179,7 +180,7 @@ export default function LoginModal({
                       }`}
                     >
                       {isUserMode ? (
-                        <MatrixPrismGlyph className="w-6 h-6" />
+                        <OzimaHarnessMark size={26} />
                       ) : (
                         <SafeBotAvatar
                           type="mech"
@@ -197,10 +198,10 @@ export default function LoginModal({
                   <div>
                     <div className="flex items-center gap-2">
                       <h2 className="text-sm font-semibold tracking-tight text-[#F3F4F6]">
-                        {isUserMode ? "Ozima AI Intelligence" : "Ozima AI Root Terminal"}
+                        {isUserMode ? "Ozima AI Harness" : "Ozima AI Harness · Operator Core"}
                       </h2>
-                      <span className="px-1.5 py-0.5 rounded-full text-[9px] font-mono font-medium tracking-wide bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
-                        {isUserMode ? "v2.4" : "CORE"}
+                      <span className="px-1.5 py-0.5 rounded text-[9px] font-mono font-bold uppercase tracking-wide bg-[#182848] text-[#4FACFE] border border-cyan-500/30">
+                        {isUserMode ? "HARNESS" : "OPERATOR"}
                       </span>
                     </div>
                     <p className="text-[11px] text-[#9CA3AF] mt-0.5 leading-snug">

@@ -120,7 +120,7 @@ export default function AdminPage() {
               className="w-full py-2 rounded-xl bg-[#161822] border border-white/[0.06] text-xs text-[#8E9CAE] hover:text-[#EDEDED] transition flex items-center justify-center gap-1.5"
             >
               <ArrowLeft className="w-3.5 h-3.5" />
-              <span>Back to User Playground</span>
+              <span>Back to Ozima Harness</span>
             </Link>
           </div>
         </div>
@@ -149,22 +149,22 @@ export default function AdminPage() {
           <div className="flex items-center gap-2">
             <MatrixPrismGlyph className="w-5 h-5 text-cyan-400" />
             <span className="font-semibold text-sm tracking-tight text-[#EDEDED]">
-              Ozima AI Admin
+              Ozima AI Harness
             </span>
-            <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-cyan-500/10 border border-cyan-500/20 text-cyan-400">
-              Pro Console
+            <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 font-bold uppercase">
+              Operator Core
             </span>
           </div>
 
           <div className="h-4 w-px bg-white/[0.1] hidden sm:block" />
 
-          {/* Quick link back to User Playground */}
+          {/* Quick link back to Ozima Harness */}
           <Link
             href="/"
             className="hidden sm:flex items-center gap-1.5 text-xs text-[#8E9CAE] hover:text-[#EDEDED] px-2.5 py-1 rounded-lg hover:bg-white/[0.04] transition"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
-            <span>User Playground</span>
+            <span>Ozima Harness</span>
           </Link>
         </div>
 

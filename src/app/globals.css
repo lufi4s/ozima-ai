@@ -3,14 +3,31 @@
 @tailwind components;
 @tailwind utilities;
 
+/* DeepSeek Harness Design Tokens & Brand Platform Variables */
 :root {
-  --background: #0A0B0D;
-  --foreground: #E6E8EB;
-  --surface: #101216;
-  --elevated: #16181D;
-  --frame: #0D0E11;
-  --border-subtle: #1E2127;
-  --border-strong: #2A2E37;
+  --dsw-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --dsw-font-family-brand: "Montserrat", var(--dsw-font-family);
+  --ds-font-family-code: "SF Mono", "JetBrains Mono", "Fira Code", Consolas, Menlo, Monaco, monospace;
+  
+  --dsw-radius-xs: 4px;
+  --dsw-radius-sm: 8px;
+  --dsw-radius-md: 12px;
+  --dsw-radius-lg: 16px;
+  --dsw-radius-xl: 20px;
+  --dsw-radius-panel: 28px;
+  
+  /* DeepSeek Brand & Surface Tokens */
+  --dsw-alias-brand-primary: #2979FF;
+  --dsw-alias-brand-cyan: #00D2FF;
+  --dsw-alias-brand-glow: rgba(41, 121, 255, 0.25);
+  
+  --background: #0B0D13;
+  --foreground: #E8EAED;
+  --surface: #10131B;
+  --elevated: #161A24;
+  --frame: #0E1017;
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.16);
 }
 
 html,
@@ -30,70 +47,75 @@ body,
 
 body {
   color: var(--foreground);
-  background: var(--background);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: #0B0D13;
+  background-image: 
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(41, 121, 255, 0.08), transparent 70%),
+    radial-gradient(ellipse 60% 40% at 100% 100%, rgba(0, 210, 255, 0.04), transparent 60%);
+  background-attachment: fixed;
+  font-family: var(--dsw-font-family);
   font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 }
 
 ::selection {
-  background: rgba(130, 170, 255, 0.25);
-  color: #E6E8EB;
+  background: rgba(41, 121, 255, 0.35);
+  color: #FFFFFF;
 }
 
 .tabular-nums {
   font-variant-numeric: tabular-nums;
 }
 
+/* DeepSeek Harness Custom Scrollbars */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
 }
 ::-webkit-scrollbar-track {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: #2C2A26;
+  background: rgba(255, 255, 255, 0.14);
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #3D3A35;
+  background: rgba(255, 255, 255, 0.25);
 }
 
-/* Terminal Dark code and markdown typography */
+/* DeepSeek Code & Markdown Typography */
 .prose pre {
-  background-color: #101216 !important;
-  border: 1px solid #1E2127;
-  border-radius: 8px;
+  background-color: #0E121B !important;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
   padding: 0.875rem 1rem;
-  font-family: "JetBrains Mono", "Geist Mono", "SFMono-Regular", Menlo, Monaco, Consolas, monospace;
+  font-family: var(--ds-font-family-code);
 }
 
 .prose code {
-  color: #C3E88D;
-  background-color: #16181D;
+  color: #79C0FF;
+  background-color: #161B26;
   padding: 0.15rem 0.35rem;
   border-radius: 4px;
-  border: 1px solid #1E2127;
-  font-family: "JetBrains Mono", "Geist Mono", "SFMono-Regular", Menlo, Monaco, Consolas, monospace;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  font-family: var(--ds-font-family-code);
   font-size: 0.875em;
 }
 
 .prose p {
   margin-top: 0.5em;
   margin-bottom: 0.5em;
-  line-height: 1.6;
-  color: #E6E8EB;
+  line-height: 1.65;
+  color: #E2E5E9;
 }
 
 .prose a {
-  color: #82AAFF;
+  color: #58A6FF;
   text-decoration: underline;
   text-underline-offset: 3px;
 }
 .prose a:hover {
-  color: #C792EA;
+  color: #79C0FF;
 }
 
 .prose ul, .prose ol {
@@ -105,5 +127,45 @@ body {
 .prose li {
   margin-top: 0.25em;
   margin-bottom: 0.25em;
-  color: #9BA1AC;
+  color: #B2B8C2;
+}
+
+/* KaTeX typesetting overrides */
+.katex-display {
+  margin: 0.75em 0 !important;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.25em 0;
+}
+
+.katex {
+  font-size: 1.05em;
+  color: #E6EDF3;
+}
+
+/* DeepSeek Harness Animations */
+@keyframes dshPulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 15px -3px rgba(41, 121, 255, 0.25);
+  }
+  50% {
+    box-shadow: 0 0 25px 2px rgba(0, 210, 255, 0.4);
+  }
+}
+
+.dsh-pulse-glow {
+  animation: dshPulseGlow 3s infinite ease-in-out;
+}
+
+@keyframes spinSlow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spinSlow 8s linear infinite;
 }

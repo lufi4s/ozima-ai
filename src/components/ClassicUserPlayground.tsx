@@ -35,6 +35,7 @@ import DeepSeekReasoningRow from "./deepseek/DeepSeekReasoningRow";
 import DeepSeekToolCallCard from "./deepseek/DeepSeekToolCallCard";
 import DeepSeekStatsLine from "./deepseek/DeepSeekStatsLine";
 import DeepSeekMarkdown from "./deepseek/DeepSeekMarkdown";
+import { OzimaHarnessMark, OzimaHarnessWordmark } from "./deepseek/OzimaHarnessBrand";
 import {
   playMessageSentSound,
   playResponseArrivedSound,
@@ -864,14 +865,9 @@ export default function ClassicUserPlayground({
         }`}
       >
         <div className="p-3 flex flex-col gap-2 overflow-hidden h-full">
-          {/* Header */}
+          {/* Header with DeepSeek Harness Wordmark */}
           <div className="flex items-center justify-between px-2 py-1.5">
-            <div className="flex items-center gap-2">
-              <MatrixPrismGlyph className="w-5 h-5 text-cyan-400" />
-              <span className="font-semibold text-sm tracking-tight text-[#EDEDED]">
-                Ozima AI
-              </span>
-            </div>
+            <OzimaHarnessWordmark size={22} />
             <button
               onClick={() => setIsSidebarOpen(false)}
               className="p-1.5 rounded-lg text-[#64748B] hover:text-[#EDEDED] hover:bg-white/[0.04] transition"
@@ -881,13 +877,27 @@ export default function ClassicUserPlayground({
             </button>
           </div>
 
+          {/* DeepSeek Harness Workspace Pill */}
+          <div className="px-2.5 py-1.5 rounded-xl bg-[#101420] border border-[#2979FF]/20 flex items-center justify-between text-[11px] font-mono text-[#8E9CAE]">
+            <span className="truncate flex items-center gap-1.5 text-cyan-400 font-medium">
+              <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
+              <span>Workspace</span>
+            </span>
+            <span className="text-[10px] text-slate-400 font-mono">Ozima Core</span>
+          </div>
+
           {/* New Chat Button */}
           <button
             onClick={startNewChat}
-            className="flex items-center gap-2 w-full px-3 py-2 rounded-xl text-xs font-medium text-[#EDEDED] bg-[#13151D] border border-white/[0.06] hover:border-white/[0.12] hover:bg-[#1A1D28] transition active:scale-[0.98]"
+            className="flex items-center justify-between w-full px-3 py-2 rounded-xl text-xs font-medium text-[#EDEDED] bg-[#141926] border border-[#2979FF]/25 hover:border-[#2979FF]/50 hover:bg-[#1B2234] transition active:scale-[0.98] shadow-sm"
           >
-            <Plus className="w-4 h-4 text-cyan-400" />
-            <span>New Chat</span>
+            <div className="flex items-center gap-2">
+              <Plus className="w-4 h-4 text-[#2979FF]" />
+              <span>New Session</span>
+            </div>
+            <kbd className="px-1.5 py-0.5 rounded text-[10px] font-mono bg-[#0D101A] border border-white/10 text-slate-400">
+              ⌘N
+            </kbd>
           </button>
 
           {/* Search Library Filter */}
@@ -993,9 +1003,12 @@ export default function ClassicUserPlayground({
             )}
 
             {/* Header Brand Badge */}
-            <div className="flex items-center gap-2 px-2.5 py-1 rounded-xl bg-[#12141C] border border-white/[0.06] text-xs">
-              <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse shrink-0" />
-              <span className="font-semibold text-[#EDEDED] tracking-tight">Ozima AI</span>
+            <div className="flex items-center gap-2 px-2.5 py-1 rounded-xl bg-[#121624] border border-[#2979FF]/25 text-xs shadow-sm">
+              <OzimaHarnessMark size={16} />
+              <span className="font-semibold text-white tracking-tight">Ozima AI</span>
+              <span className="px-1.5 py-0.5 rounded text-[9.5px] font-mono font-bold uppercase bg-[#182848] text-[#4FACFE]">
+                HARNESS
+              </span>
             </div>
           </div>
 
@@ -1072,9 +1085,13 @@ export default function ClassicUserPlayground({
         {/* Content Canvas */}
         <div className="flex-1 overflow-y-auto">
           {messages.length === 0 ? (
-            /* Pristine Clean Hero State with Interactive Mascot Companion */
-            <div className="min-h-full flex flex-col items-center justify-center max-w-2xl mx-auto px-4 py-8 sm:py-16 text-center relative">
+            /* DeepSeek Harness Signature Hero State with Ozima AI Branding */
+            <div className="min-h-full flex flex-col items-center justify-center max-w-2xl mx-auto px-4 py-8 sm:py-12 text-center relative">
               <div className="mb-4 flex flex-col items-center">
+                <div className="relative mb-3 flex items-center justify-center">
+                  <div className="absolute inset-0 rounded-full bg-[#2979FF]/20 filter blur-xl animate-pulse" />
+                  <OzimaHarnessMark size={52} className="relative z-10 filter drop-shadow-[0_0_22px_rgba(41,121,255,0.45)]" />
+                </div>
                 <InteractiveMascot
                   variant="hero"
                   status={isStreaming ? "streaming" : searchStatus ? "searching" : "idle"}
@@ -1082,17 +1099,20 @@ export default function ClassicUserPlayground({
               </div>
 
               <div className="mb-6 flex flex-col items-center">
-                <h1 className="text-2xl sm:text-3xl font-semibold text-[#EDEDED] tracking-tight">
-                  Ozima AI
+                <h1 className="text-2xl sm:text-3xl font-bold font-sans text-white tracking-tight flex items-center gap-2 justify-center">
+                  <span>Ozima AI</span>
+                  <span className="px-2 py-0.5 rounded text-xs font-mono font-bold tracking-wider uppercase bg-[#182848] text-[#4FACFE] border border-cyan-500/30">
+                    HARNESS
+                  </span>
                 </h1>
-                <p className="text-xs sm:text-sm text-[#717E91] mt-1.5 max-w-md">
-                  Clean, fast model responses with intelligent live web search and interactive companion.
+                <p className="text-xs sm:text-sm text-[#8E9CAE] mt-1.5 max-w-md">
+                  Autonomous Multi-Model Agent Harness with Deep Reasoning, Tool Execution & Live Web Grounding.
                 </p>
               </div>
 
               {/* Clean Omni-Search Input */}
               <div className="w-full mb-6 text-left">
-                <div className="bg-[#12141C] border border-white/[0.08] focus-within:border-cyan-500/40 focus-within:ring-1 focus-within:ring-cyan-500/20 rounded-2xl p-3 shadow-xl transition duration-200">
+                <div className="bg-[#101420]/95 border border-white/[0.08] focus-within:border-[#2979FF]/50 focus-within:ring-2 focus-within:ring-[#2979FF]/20 rounded-2xl p-3 shadow-xl transition duration-200">
                   <textarea
                     rows={2}
                     value={inputPrompt}
@@ -1231,9 +1251,9 @@ export default function ClassicUserPlayground({
                       type="button"
                       onClick={() => handleSendMessage()}
                       disabled={!inputPrompt.trim() || !selectedModelId}
-                      className="p-1.5 sm:px-3 sm:py-1.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-[#090A0F] font-bold text-xs disabled:opacity-30 transition flex items-center gap-1 shadow-md hover:shadow-cyan-500/20"
+                      className="p-1.5 sm:px-3 sm:py-1.5 rounded-xl bg-[#2979FF] hover:bg-[#1E6FFF] text-white font-semibold text-xs disabled:opacity-30 transition flex items-center gap-1 shadow-md hover:shadow-[#2979FF]/30 active:scale-[0.96]"
                     >
-                      <span className="hidden sm:inline">{isCompareMode ? "Compare" : "Explore"}</span>
+                      <span className="hidden sm:inline">{isCompareMode ? "Compare" : "Run"}</span>
                       <ArrowUp className="w-3.5 h-3.5" />
                     </button>
                   </div>
@@ -1401,14 +1421,18 @@ export default function ClassicUserPlayground({
                     {/* Header line with model info & tools */}
                     <div className="flex items-center justify-between text-xs text-[#717E91]">
                       <div className="flex items-center gap-2 font-medium">
+                        <OzimaHarnessMark size={16} />
                         <span className="text-[#EDEDED] font-semibold">
                           {msg.model_name || selectedModel?.display_name || "Ozima AI"}
                         </span>
                         {msg.route === "WEB_SEARCH" && (
-                          <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 font-mono">
+                          <span className="text-[10px] px-2 py-0.5 rounded-full bg-cyan-500/10 text-cyan-300 border border-cyan-500/25 font-mono">
                             Live Grounded
                           </span>
                         )}
+                        <span className="text-[10px] font-mono text-slate-500">
+                          dsh-agent
+                        </span>
                       </div>
 
                       {/* Action Controls */}
@@ -1530,7 +1554,7 @@ export default function ClassicUserPlayground({
                   e.preventDefault();
                   handleSendMessage();
                 }}
-                className="bg-[#12141C] border border-white/[0.08] focus-within:border-cyan-500/40 focus-within:ring-1 focus-within:ring-cyan-500/20 rounded-2xl p-2.5 sm:p-3 transition flex flex-col gap-2 shadow-2xl"
+                className="bg-[#101420]/95 border border-white/[0.08] focus-within:border-[#2979FF]/50 focus-within:ring-2 focus-within:ring-[#2979FF]/20 rounded-2xl p-2.5 sm:p-3 transition flex flex-col gap-2 shadow-2xl"
               >
                 <textarea
                   ref={textareaRef}
@@ -1671,7 +1695,7 @@ export default function ClassicUserPlayground({
                     <button
                       type="submit"
                       disabled={!inputPrompt.trim() || !selectedModelId}
-                      className="p-1.5 sm:px-3 sm:py-1.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-[#090A0F] font-bold text-xs disabled:opacity-30 transition flex items-center gap-1 shadow-md hover:shadow-cyan-500/20"
+                      className="p-1.5 sm:px-3 sm:py-1.5 rounded-xl bg-[#2979FF] hover:bg-[#1E6FFF] text-white font-semibold text-xs disabled:opacity-30 transition flex items-center gap-1 shadow-md hover:shadow-[#2979FF]/30 active:scale-[0.96]"
                     >
                       <span className="hidden sm:inline">{isCompareMode ? "Compare" : "Send"}</span>
                       <ArrowUp className="w-3.5 h-3.5" />
